@@ -1,6 +1,10 @@
-export default (posts = [], action) => {
-    if (action.type === 'FETCH_POSTS') {
-        return action.payload.data;
+const getPosts = (posts = [], action) => {
+    switch (action.type) {
+        case 'FETCH_POSTS':
+            return action.payload;
+        default:
+            return posts;
     }
-    return posts;
 }
+
+export default getPosts;
