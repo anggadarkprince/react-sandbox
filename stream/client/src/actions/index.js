@@ -30,6 +30,8 @@ export const fetchStreams = () => {
         const response = await streams.get('/streams');
 
         dispatch({type: FETCH_STREAMS, payload: response.data});
+
+        return response;
     }
 }
 
@@ -46,6 +48,8 @@ export const editStream = (id, formValues) => {
         const response = await streams.patch(`/streams/${id}`, formValues);
 
         dispatch({type: EDIT_STREAM, payload: response.data});
+
+        return response;
     }
 }
 
@@ -54,5 +58,7 @@ export const deleteStream = (id) => {
         const response = await streams.delete(`/streams/${id}`);
 
         dispatch({type: DELETE_STREAM, payload: id});
+
+        return response;
     }
 }

@@ -3,13 +3,13 @@ import {connect} from "react-redux";
 import {fetchStreams} from "../../actions";
 import {Link} from "react-router-dom";
 
-let StreamList = (props) => {
+let StreamList = ({fetchStreams, isSignedIn, currentUserId, streams}) => {
     useEffect(() => {
-        props.fetchStreams();
-    }, []);
+        fetchStreams();
+    }, [fetchStreams]);
 
     const renderCreate = () => {
-        if (props.isSignedIn) {
+        if (isSignedIn) {
             return (
                 <div style={{textAlign: 'right'}}>
                     <Link to="/streams/new" className="ui button positive">
@@ -21,22 +21,22 @@ let StreamList = (props) => {
     }
 
     const renderAction = (stream) => {
-        if (props.isSignedIn && stream.userId === props.currentUserId) {
+        if (isSignedIn && stream.userId === currentUserId) {
             return (
                 <div className="right floated content">
                     <Link to={`/streams/edit/${stream.id}`} className="ui button small icon primary">
                         Edit
                     </Link>
-                    <button className="ui button small icon negative">
+                    <Link to={`/streams/delete/${stream.id}`} className="ui button small icon negative">
                         <i className="icon trash"/>
-                    </button>
+                    </Link>
                 </div>
             )
         }
     }
 
     const renderList = () => {
-        return props.streams.map(stream => (
+        return streams.map(stream => (
             <div className="item" key={stream.id}>
                 {renderAction(stream)}
                 <i className="large middle aligned icon camera"/>

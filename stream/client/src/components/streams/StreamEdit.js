@@ -5,20 +5,20 @@ import {fetchStream, editStream} from "../../actions";
 import StreamForm from "./StreamForm";
 import _ from 'lodash';
 
-let StreamEdit = (props) => {
+let StreamEdit = ({fetchStream, streams}) => {
     const {id} = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
-        props.fetchStream(id);
-    }, [id]);
+        fetchStream(id);
+    }, [id, fetchStream]);
 
     const onSubmit = async (formValues) => {
-        await props.editStream(id, formValues);
+        await editStream(id, formValues);
         navigate('/streams');
     }
 
-    const stream = props.streams[id];
+    const stream = streams[id];
 
     return (
         <div>
