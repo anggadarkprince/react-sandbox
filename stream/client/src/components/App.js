@@ -6,6 +6,7 @@ import StreamEdit from "./streams/StreamEdit";
 import StreamDelete from "./streams/StreamDelete";
 import StreamShow from "./streams/StreamShow";
 import Header from "./Header";
+import '../style/App.css'
 
 const App = () => {
     return (
@@ -18,7 +19,7 @@ const App = () => {
                     <Route path="new" element={<StreamCreate />} />
                     <Route path="edit/:id" element={<StreamEdit />} />
                     <Route path="delete/:id" element={<StreamDelete />} />
-                    <Route path="show" element={<StreamShow />} />
+                    <Route path=":id" element={<StreamShow />} />
                 </Route>
             </Routes>
         </div>

@@ -49,7 +49,6 @@ const GoogleAuth = ({isSignedIn, signIn, signOut}) => {
         } else if (isSignedIn) {
             return (
                 <button className="ui red google button" onClick={onSignOut}>
-                    <i className="logout icon"/>
                     Sign Out
                 </button>
             )
